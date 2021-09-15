@@ -3,6 +3,7 @@ Vagrant.configure('2') do |config|
   config.vm.box          = 'ubuntu/focal64'
   config.disksize.size   = '60GB'
   config.vm.network 'forwarded_port', guest: 3000, host: 3000
+  config.vm.network 'forwarded_port', guest: 9292, host: 9292
 
   config.vm.provider 'virtualbox' do |v|
     v.memory = '8192'
@@ -36,23 +37,23 @@ Vagrant.configure('2') do |config|
     sudo chmod +x /usr/local/bin/docker-compose
     sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
-    sudo touch /etc/profile.d/locaweb.sh
-    sudo chmod 0777 /etc/profile.d/locaweb.sh
-    cat >> /etc/profile.d/locaweb.sh <<EOL
+    sudo touch /etc/profile.d/workspace.sh
+    sudo chmod 0777 /etc/profile.d/workspace.sh
+    cat >> /etc/profile.d/workspace.sh <<EOL
 #!/bin/bash
 export LANG=C.UTF-8
 export TZ=America/Sao_Paulo
 EOL
-    sudo chmod +x /etc/profile.d/locaweb.sh
-    source /etc/profile.d/locaweb.sh
+    sudo chmod +x /etc/profile.d/workspace.sh
+    source /etc/profile.d/workspace.sh
 
     sudo cat >> /home/vagrant/.bashrc <<EOL
 dos2unix /vagrant/**/*
 cd /vagrant
 sudo su
-source /etc/profile.d/locaweb.sh
+source /etc/profile.d/workspace.sh
 EOL
 
-    echo "Locaweb workspace created!"
+    echo "Workspace created!"
   SHELL
 end

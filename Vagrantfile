@@ -2,8 +2,6 @@ Vagrant.configure('2') do |config|
   config.vagrant.plugins = ['vagrant-vbguest', 'vagrant-disksize']
   config.vm.box          = 'ubuntu/focal64'
   config.disksize.size   = '60GB'
-  config.vm.network 'forwarded_port', guest: 3000, host: 3000
-  config.vm.network 'forwarded_port', guest: 9292, host: 9292
 
   config.vm.provider 'virtualbox' do |v|
     v.memory = '8192'

@@ -1,8 +1,8 @@
 name: Vagrant Box
 
 on:
-  push:
-    branches: [main]
+  release:
+    types: [created]
 
 jobs:
   deploy:
@@ -11,7 +11,7 @@ jobs:
     env:
       VAGRANT_CLOUD_USERNAME: pedrofurtado
       VAGRANT_CLOUD_BOX_NAME: vagrant-ubuntu-workspace
-      VAGRANT_CLOUD_BOX_VERSION: 1.0.1
+      VAGRANT_CLOUD_BOX_VERSION: ${{ github.event.release.tag_name }}
       VAGRANT_CLOUD_ACCESS_TOKEN: ${{ secrets.VAGRANT_CLOUD_ACCESS_TOKEN }}
 
     steps:

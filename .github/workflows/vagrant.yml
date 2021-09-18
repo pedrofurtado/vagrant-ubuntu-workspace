@@ -46,11 +46,11 @@ jobs:
       - name: VM - Timezone
         run: vagrant ssh -c "date"
 
-      - name: VM - Docker Engine
+      - name: VM - Docker
         run: vagrant ssh -c "docker --version"
 
-      - name: VM - JQ
-        run: vagrant ssh -c "jq --version"
+      - name: VM - Pip3
+        run: vagrant ssh -c "pip3 --version"
 
       - name: VM - Docker compose
         run: vagrant ssh -c "docker-compose --version"

@@ -39,9 +39,7 @@ Vagrant.configure('2') do |config|
 end
 ```
 
-> You can change later the amount of RAM memory, CPUs and disk size.
-
-Shell/CMD
+CMD
 
 ```bash
 vagrant up (run as Administrator)

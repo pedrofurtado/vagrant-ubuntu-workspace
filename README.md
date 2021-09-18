@@ -34,7 +34,7 @@ Vagrant.configure('2') do |config|
     v.memory    = '8192'
     v.cpus      = '2'
     v.customize ['setextradata', :id, 'VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root', '1']
-    v.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
+    v.customize ['modifyvm',     :id, '--uartmode1', 'disconnected']
   end
 end
 ```

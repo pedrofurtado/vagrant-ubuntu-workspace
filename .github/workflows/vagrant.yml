@@ -1,29 +1,40 @@
 name: Vagrant Box
 
 on:
-  workflow_dispatch:
   push:
     branches: [main]
 
 jobs:
-  box:
+  deploy:
     runs-on: macos-latest
 
+    env:
+      VAGRANT_CLOUD_USERNAME: pedrofurtado
+      VAGRANT_CLOUD_BOX_NAME: vagrant-ubuntu-workspace
+      VAGRANT_CLOUD_BOX_VERSION: 1.0.1
+      VAGRANT_CLOUD_ACCESS_TOKEN: ${{ secrets.VAGRANT_CLOUD_ACCESS_TOKEN }}
+
     steps:
-      - name: Install plugins
+      - name: Version - Vagrant
+        run: vagrant --version
+
+      - name: Version - JQ
+        run: jq --version
+
+      - name: Version - cURL
+        run: curl --version
+
+      - name: Version - Box
+        run: echo $VAGRANT_CLOUD_BOX_VERSION
+
+      - name: VM - Plugins
         run: |
           vagrant plugin install vagrant-vbguest
           vagrant plugin install vagrant-disksize
 
       - uses: actions/checkout@v2
 
-      - name: Vagrant version
-        run: vagrant --version
-
-      - name: Box version
-        run: echo "1.0.0 - mudar isso depois"
-
-      - name: Build VM
+      - name: VM - Build script
         run: vagrant up
 
       - name: VM - OS version
@@ -44,8 +55,57 @@ jobs:
       - name: VM - Default folder
         run: vagrant ssh -c "pwd"
 
-      - name: Shutdown VM
+      - name: VM - Shutdown
         run: vagrant halt
 
-      - name: Package box
+      - name: VM - Package box
         run: vagrant package
+
+      - name: Vagrant Cloud - Create release ${{ env.VAGRANT_CLOUD_BOX_VERSION }}
+        run: |
+          curl \
+            --header "Content-Type: application/json" \
+            --header "Authorization: Bearer $VAGRANT_CLOUD_ACCESS_TOKEN" \
+            https://app.vagrantup.com/api/v1/box/$VAGRANT_CLOUD_USERNAME/$VAGRANT_CLOUD_BOX_NAME/versions \
+            --data '
+              {
+                "version": {
+                  "version": "'"$VAGRANT_CLOUD_BOX_VERSION"'",
+                  "description": ""
+                }
+              }
+            '
+
+      - name: Vagrant Cloud - Create VirtualBox provider for release ${{ env.VAGRANT_CLOUD_BOX_VERSION }}
+        run: |
+          curl \
+            --header "Content-Type: application/json" \
+            --header "Authorization: Bearer $VAGRANT_CLOUD_ACCESS_TOKEN" \
+            https://app.vagrantup.com/api/v1/box/$VAGRANT_CLOUD_USERNAME/$VAGRANT_CLOUD_BOX_NAME/version/$VAGRANT_CLOUD_BOX_VERSION/providers \
+            --data '
+              {
+                "provider": {
+                  "name": "virtualbox"
+                }
+              }
+            '
+
+      - name: Vagrant Cloud - Upload box for release ${{ env.VAGRANT_CLOUD_BOX_VERSION }}
+        run: |
+          response=$(curl \
+            --header "Authorization: Bearer $VAGRANT_CLOUD_ACCESS_TOKEN" \
+            https://app.vagrantup.com/api/v1/box/$VAGRANT_CLOUD_USERNAME/$VAGRANT_CLOUD_BOX_NAME/version/$VAGRANT_CLOUD_BOX_VERSION/provider/virtualbox/upload)
+
+          upload_path=$(echo $response | jq -r .upload_path)
+          
+          curl \
+            $(echo $response | jq -r .upload_path) \
+            --request PUT \
+            --upload-file package.box
+
+      - name: Vagrant Cloud - Publish release ${{ env.VAGRANT_CLOUD_BOX_VERSION }}
+        run: |
+          curl \
+            --header "Authorization: Bearer $VAGRANT_CLOUD_ACCESS_TOKEN" \
+            https://app.vagrantup.com/api/v1/box/$VAGRANT_CLOUD_USERNAME/$VAGRANT_CLOUD_BOX_NAME/version/$VAGRANT_CLOUD_BOX_VERSION/release \
+            --request PUT

@@ -1,0 +1,51 @@
+name: Vagrant Box
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+jobs:
+  box:
+    runs-on: macos-latest
+
+    steps:
+      - name: Install plugins
+        run: |
+          vagrant plugin install vagrant-vbguest
+          vagrant plugin install vagrant-disksize
+
+      - uses: actions/checkout@v2
+
+      - name: Vagrant version
+        run: vagrant --version
+
+      - name: Box version
+        run: echo "1.0.0 - mudar isso depois"
+
+      - name: Build VM
+        run: vagrant up
+
+      - name: VM - OS version
+        run: vagrant ssh -c "cat /etc/os-release"
+
+      - name: VM - Timezone
+        run: vagrant ssh -c "date"
+
+      - name: VM - Docker Engine
+        run: vagrant ssh -c "docker --version"
+
+      - name: VM - Docker compose
+        run: vagrant ssh -c "docker-compose --version"
+
+      - name: VM - Default user
+        run: vagrant ssh -c "whoami"
+
+      - name: VM - Default folder
+        run: vagrant ssh -c "pwd"
+
+      - name: Shutdown VM
+        run: vagrant halt
+
+      - name: Package box
+        run: vagrant package

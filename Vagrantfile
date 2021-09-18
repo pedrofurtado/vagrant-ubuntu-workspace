@@ -1,11 +1,5 @@
 Vagrant.configure('2') do |config|
-  config.vagrant.plugins = ['vagrant-vbguest']
-  config.vm.box          = 'ubuntu/focal64'
-
-  config.vm.provider 'virtualbox' do |v|
-    v.customize ['modifyvm', :id, '--uartmode1', 'disconnected']
-  end
-
+  config.vm.box = 'ubuntu/focal64'
   config.vm.provision 'shell', inline: <<-SHELL
     export DEBIAN_FRONTEND=noninteractive
     export DEBCONF_NONINTERACTIVE_SEEN=true

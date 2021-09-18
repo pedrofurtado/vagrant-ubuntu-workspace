@@ -1,5 +1,6 @@
 Vagrant.configure('2') do |config|
   config.vm.box = 'ubuntu/focal64'
+  config.vagrant.plugins = ['vagrant-vbguest']
   config.vm.provision 'shell', inline: <<-SHELL
     export DEBIAN_FRONTEND=noninteractive
     export DEBCONF_NONINTERACTIVE_SEEN=true

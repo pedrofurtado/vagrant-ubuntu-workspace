@@ -19,29 +19,24 @@ The first step is to install the following softwares in your PC:
 - VirtualBox
 - Vagrant
 
-## Usage
+## Usage (examples)
 
 Vagrantfile
 
+> You can change the amount of RAM memory, CPUs and disk size :+1:
+
 ```ruby
-Vagrant.configure("2") do |config|
-  config.vm.box = "pedrofurtado/vagrant-ubuntu-workspace"
+Vagrant.configure('2') do |config|
+  config.vm.box          = 'pedrofurtado/vagrant-ubuntu-workspace'
+  config.vagrant.plugins = ['vagrant-vbguest', 'vagrant-disksize']
+  config.disksize.size   = '100GB'
+  config.vm.provider 'virtualbox' do |v|
+    v.memory = '8192'
+    v.cpus   = '2'
+    v.customize ['setextradata', :id, 'VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root', '1']
+    v.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
+  end
 end
-```
-
-Shell
-
-```bash
-vagrant init pedrofurtado/vagrant-ubuntu-workspace
-vagrant up
-```
-
-Build from scratch
-
-```bash
-git clone https://github.com/pedrofurtado/vagrant-ubuntu-workspace
-cd vagrant-ubuntu-workspace/
-vagrant up
 ```
 
 ## Contributing

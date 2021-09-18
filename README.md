@@ -28,7 +28,7 @@ Vagrantfile
 ```ruby
 Vagrant.configure('2') do |config|
   config.vm.box          = 'pedrofurtado/vagrant-ubuntu-workspace'
-  config.vagrant.plugins = ['vagrant-vbguest', 'vagrant-disksize']
+  config.vagrant.plugins = ['vagrant-disksize']
   config.disksize.size   = '100GB'
   config.vm.provider 'virtualbox' do |v|
     v.memory    = '8192'

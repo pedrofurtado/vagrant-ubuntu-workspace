@@ -4,7 +4,8 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/pedrofurtado/vagrant-ubuntu-workspace)
 [![license](https://img.shields.io/github/license/pedrofurtado/vagrant-ubuntu-workspace.svg)]()
 
-My personal Ubuntu vagrant workspace with VirtualBox provider. 
+My personal Ubuntu vagrant workspace with VirtualBox provider.
+
 Used only for development purposes.
 
 ## Installation

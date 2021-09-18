@@ -18,12 +18,11 @@ The first step is to install the following softwares in your PC:
 
 - VirtualBox
 - Vagrant
+- Access to run Vagrant as Administrator
 
 ## Usage (example)
 
 Vagrantfile
-
-> You can change later the amount of RAM memory, CPUs and disk size.
 
 ```ruby
 Vagrant.configure('2') do |config|
@@ -38,6 +37,16 @@ Vagrant.configure('2') do |config|
   end
 end
 ```
+
+> You can change later the amount of RAM memory, CPUs and disk size.
+
+Shell/CMD
+
+```bash
+vagrant up (run as Administrator)
+```
+
+Enjoy!
 
 ## Contributing
 

@@ -23,7 +23,7 @@ The first step is to install the following softwares in your PC:
 
 Vagrantfile
 
-> You can change the amount of RAM memory, CPUs and disk size :+1:
+> You can change later the amount of RAM memory, CPUs and disk size.
 
 ```ruby
 Vagrant.configure('2') do |config|

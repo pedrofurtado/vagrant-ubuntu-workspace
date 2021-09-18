@@ -17,7 +17,7 @@ The first step is to install the following softwares in your PC:
 
 How to use this box with Vagrant:
 
-### Vagrantfile
+Vagrantfile
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-# Shell
+Shell
 
 ```bash
 vagrant init pedrofurtado/vagrant-ubuntu-workspace

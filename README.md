@@ -14,7 +14,7 @@ This workspace supports Windows as host.
 
 ## Installation
 
-The first step is to install the following softwares in your PC:
+Install the following softwares in your PC:
 
 - VirtualBox
 - Vagrant

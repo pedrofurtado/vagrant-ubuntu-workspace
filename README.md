@@ -17,7 +17,7 @@ The first step is to install the following softwares in your PC:
 
 ## Usage
 
-How to use this box with Vagrant:
+How to use this workspace with Vagrant:
 
 Vagrantfile
 
@@ -31,6 +31,14 @@ Shell
 
 ```bash
 vagrant init pedrofurtado/vagrant-ubuntu-workspace
+vagrant up
+```
+
+Build from scratch
+
+```bash
+git clone https://github.com/pedrofurtado/vagrant-ubuntu-workspace
+cd vagrant-ubuntu-workspace/
 vagrant up
 ```
 

@@ -19,7 +19,7 @@ The first step is to install the following softwares in your PC:
 - VirtualBox
 - Vagrant
 
-## Usage (examples)
+## Usage (example)
 
 Vagrantfile
 

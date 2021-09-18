@@ -1,14 +1,6 @@
 Vagrant.configure('2') do |config|
-  config.vagrant.plugins = ['vagrant-vbguest', 'vagrant-disksize']
+  config.vagrant.plugins = ['vagrant-vbguest']
   config.vm.box          = 'ubuntu/focal64'
-  config.disksize.size   = '100GB'
-
-  config.vm.provider 'virtualbox' do |v|
-    v.memory = '8192'
-    v.cpus   = '2'
-    v.customize ['setextradata', :id, 'VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root', '1']
-  end
-
   config.vm.provision 'shell', inline: <<-SHELL
     export DEBIAN_FRONTEND=noninteractive
     export DEBCONF_NONINTERACTIVE_SEEN=true

@@ -1,4 +1,4 @@
-name: Vagrant Box
+name: Vagrant box
 
 on:
   release:
@@ -18,10 +18,10 @@ jobs:
       - name: Version - Vagrant
         run: vagrant --version
 
-      - name: Version - JQ
+      - name: Version - Jq
         run: jq --version
 
-      - name: Version - cURL
+      - name: Version - Curl
         run: curl --version
 
       - name: Version - Box

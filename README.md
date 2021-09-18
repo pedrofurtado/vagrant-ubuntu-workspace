@@ -8,6 +8,10 @@ My personal Ubuntu vagrant workspace with VirtualBox provider.
 
 Used only for development purposes.
 
+## Platforms support
+
+This workspace supports Windows as host.
+
 ## Installation
 
 The first step is to install the following softwares in your PC:

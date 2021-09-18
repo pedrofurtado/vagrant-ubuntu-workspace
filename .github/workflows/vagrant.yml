@@ -71,7 +71,7 @@ jobs:
               {
                 "version": {
                   "version": "'"$VAGRANT_CLOUD_BOX_VERSION"'",
-                  "description": ""
+                  "description": "Box automatically released based on this repository: https://github.com/pedrofurtado/vagrant-ubuntu-workspace"
                 }
               }
             '

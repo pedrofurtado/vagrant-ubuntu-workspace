@@ -17,8 +17,6 @@ The first step is to install the following softwares in your PC:
 
 ## Usage
 
-How to use this workspace with:
-
 Vagrantfile
 
 ```ruby

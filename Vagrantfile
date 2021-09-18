@@ -46,11 +46,16 @@ EOL
     source /etc/profile.d/workspace.sh
 
     sudo cat >> /home/vagrant/.bashrc <<EOL
-dos2unix /vagrant/**/*
 cd /vagrant
 sudo su
 source /etc/profile.d/workspace.sh
 EOL
+
+    sudo cat >> /usr/bin/dos2unix_recursive <<'EOL'
+#!/bin/bash
+find $1 -type f -print0 | xargs -0 dos2unix
+EOL
+    sudo chmod +x /usr/bin/dos2unix_recursive
 
     echo "Workspace created!"
   SHELL

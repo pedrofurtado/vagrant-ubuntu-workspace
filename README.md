@@ -18,7 +18,8 @@ Install the following softwares in your PC:
 
 - VirtualBox
 - Vagrant
-- Access to run Vagrant as Administrator
+
+Important note: You will need to run Vagrant as Administrator.
 
 ## Usage (example)
 

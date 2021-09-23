@@ -25,6 +25,11 @@ Vagrant.configure('2') do |config|
     sudo docker volume create portainer_data
     sudo docker container run -d -p 9999:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 
+    sudo apt-get install -y virtualbox-guest-additions-iso
+    sudo apt-get install -y virtualbox-guest-dkms
+    sudo apt-get install -y virtualbox-guest-utils
+    sudo apt-get install -y virtualbox-guest-x11
+
     sudo touch /etc/profile.d/workspace.sh
     sudo chmod 0777 /etc/profile.d/workspace.sh
     cat >> /etc/profile.d/workspace.sh <<EOL

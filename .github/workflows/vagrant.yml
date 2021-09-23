@@ -49,6 +49,9 @@ jobs:
       - name: VM - Docker
         run: vagrant ssh -c "docker --version"
 
+      - name: VM - Portainer
+        run: vagrant ssh -c "docker container inspect portainer | grep Status"
+
       - name: VM - Pip3
         run: vagrant ssh -c "pip3 --version"
 

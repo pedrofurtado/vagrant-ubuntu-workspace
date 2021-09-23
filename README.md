@@ -30,7 +30,7 @@ Vagrant.configure('2') do |config|
   config.vm.box          = 'pedrofurtado/vagrant-ubuntu-workspace'
   config.vagrant.plugins = ['vagrant-disksize']
   config.disksize.size   = '100GB'
-  config.vm.network 'forwarded_port', guest:  9999, host: 9999, id: 'portainer'
+  config.vm.network 'forwarded_port', guest: 9999, host: 9999, id: 'portainer'
   config.vm.provider 'virtualbox' do |v|
     v.memory    = '8192'
     v.cpus      = '2'

@@ -30,13 +30,19 @@ Vagrant.configure('2') do |config|
   config.vm.box          = 'pedrofurtado/vagrant-ubuntu-workspace'
   config.vagrant.plugins = ['vagrant-disksize']
   config.disksize.size   = '100GB'
+  config.vm.box_version  = 'x.y.z'
   config.vm.network 'forwarded_port', guest: 9999, host: 9999, id: 'portainer'
+  config.vm.network 'forwarded_port', guest: 1234, host: 1234, id: 'my_app'
   config.vm.provider 'virtualbox' do |v|
     v.memory    = '8192'
     v.cpus      = '2'
     v.customize ['setextradata', :id, 'VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root', '1']
     v.customize ['modifyvm',     :id, '--uartmode1', 'disconnected']
   end
+  
+  config.vm.provision 'shell', inline: <<-SHELL
+    # Your shell script here
+  SHELL
 end
 ```
 

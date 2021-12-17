@@ -58,6 +58,9 @@ jobs:
       - name: VM - Docker compose
         run: vagrant ssh -c "docker-compose --version"
 
+      - name: VM - Ngrok
+        run: vagrant ssh -c "ngrok -v"
+
       - name: VM - Default user
         run: vagrant ssh -c "whoami"
 

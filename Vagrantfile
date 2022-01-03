@@ -41,7 +41,6 @@ Vagrant.configure('2') do |config|
 #!/bin/bash
 export LANG=C.UTF-8
 export TZ=America/Sao_Paulo
-alias remove_docker_compose_environment='docker-compose down --volumes --rmi local --remove-orphans'
 EOL
     sudo chmod +x /etc/profile.d/workspace.sh
     source /etc/profile.d/workspace.sh
@@ -50,6 +49,7 @@ EOL
 cd /vagrant
 sudo su
 source /etc/profile.d/workspace.sh
+alias remove_docker_compose_environment='docker-compose down --volumes --rmi local --remove-orphans'
 EOL
 
     sudo cat >> /usr/bin/dos2unix_recursive <<'EOL'

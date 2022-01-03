@@ -35,9 +35,10 @@ Vagrant.configure('2') do |config|
     sudo apt-get install -y virtualbox-guest-utils
     sudo apt-get install -y virtualbox-guest-x11
 
-    sudo echo "alias remove_docker_compose_environment='docker-compose down --volumes --rmi local --remove-orphans'" >> /root/.bashrc
-    sudo echo "alias create_docker_compose_environment='docker-compose up --build -d'" >> /root/.bashrc
-    sudo echo "alias logs_docker_compose_environment='docker-compose logs -f --tail 100'" >> /root/.bashrc
+    sudo echo "alias dc_down='docker-compose down --volumes --rmi local --remove-orphans'" >> /root/.bashrc
+    sudo echo "alias dc_up='docker-compose up --build -d'" >> /root/.bashrc
+    sudo echo "alias dc_logs='docker-compose logs -f --tail 100'" >> /root/.bashrc
+    sudo echo "alias dc_exec='docker container exec -it'" >> /root/.bashrc
 
     sudo touch /etc/profile.d/workspace.sh
     sudo chmod 0777 /etc/profile.d/workspace.sh

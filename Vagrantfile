@@ -39,6 +39,9 @@ Vagrant.configure('2') do |config|
     sudo echo "alias dc_up='docker-compose up --build -d'" >> /root/.bashrc
     sudo echo "alias dc_logs='docker-compose logs -f --tail 100'" >> /root/.bashrc
     sudo echo "alias dc_exec='docker container exec -it'" >> /root/.bashrc
+    sudo echo "alias dc_restart='docker-compose restart'" >> /root/.bashrc
+    sudo echo "alias dc_stop='docker-compose stop'" >> /root/.bashrc
+    sudo echo "alias dc_start='docker-compose start'" >> /root/.bashrc
 
     sudo touch /etc/profile.d/workspace.sh
     sudo chmod 0777 /etc/profile.d/workspace.sh

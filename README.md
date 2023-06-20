@@ -32,6 +32,7 @@ Vagrant.configure('2') do |config|
   config.disksize.size   = '100GB'
   config.vm.box_version  = 'x.y.z'
   config.vm.network 'forwarded_port', guest: 9999, host: 9999, id: 'portainer'
+  config.vm.network 'forwarded_port', guest: 9998, host: 9998, id: 'k8s_dashboard'
   config.vm.network 'forwarded_port', guest: 1234, host: 1234, id: 'my_app'
   config.vm.provider 'virtualbox' do |v|
     v.memory    = '8192'

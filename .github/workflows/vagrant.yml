@@ -49,6 +49,12 @@ jobs:
       - name: VM - Docker
         run: vagrant ssh -c "docker --version"
 
+      - name: VM - Kind K8s
+        run: vagrant ssh -c "kind --version"
+
+      - name: VM - Kubectl K8s
+        run: vagrant ssh -c "kubectl version"
+
       - name: VM - Portainer
         run: vagrant ssh -c "sudo docker container inspect portainer | grep Status"
 

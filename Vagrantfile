@@ -30,6 +30,10 @@ Vagrant.configure('2') do |config|
     unzip ngrok-stable-linux-amd64.zip
     sudo mv ./ngrok /usr/bin/ngrok
 
+    curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
+    sudo chmod +x ./kind
+    sudo mv ./kind /usr/local/bin/kind
+
     sudo apt-get install -y virtualbox-guest-additions-iso
     sudo apt-get install -y virtualbox-guest-dkms
     sudo apt-get install -y virtualbox-guest-utils

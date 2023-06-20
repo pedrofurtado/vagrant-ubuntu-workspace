@@ -77,6 +77,7 @@ EOL
     sudo chmod +x /usr/bin/dos2unix_recursive
 
 sudo cat >> /k8s_create_cluster.sh <<'EOL'
+#!/bin/bash
 kubectl delete all --all
 kubectl delete "$(kubectl api-resources --namespaced=true --verbs=delete -o name | tr "\n" "," | sed -e 's/,$//')" --all
 kubectl delete all --all --all-namespaces
@@ -89,6 +90,7 @@ EOL
     sudo echo "alias k8s_create_cluster='/k8s_create_cluster.sh'" >> /root/.bashrc
 
     sudo cat >> /k8s_create_dashboard.sh <<'EOL'
+#!/bin/bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
 sleep 10
 kubectl create serviceaccount -n kubernetes-dashboard admin-user
@@ -101,6 +103,7 @@ EOL
     sudo echo "alias k8s_create_dashboard='/k8s_create_dashboard.sh'" >> /root/.bashrc
 
     sudo cat >> /k8s_start_dashboard.sh <<'EOL'
+#!/bin/bash
 echo "Please, access the URL: http://localhost:9998/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login"
 kubectl proxy --port=9998 --address=0.0.0.0
 EOL

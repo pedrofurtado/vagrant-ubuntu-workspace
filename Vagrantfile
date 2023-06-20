@@ -76,6 +76,38 @@ find $1 -type f -print0 | xargs -0 dos2unix
 EOL
     sudo chmod +x /usr/bin/dos2unix_recursive
 
+sudo cat >> /k8s_create_cluster.sh <<'EOL'
+kubectl delete all --all
+kubectl delete "$(kubectl api-resources --namespaced=true --verbs=delete -o name | tr "\n" "," | sed -e 's/,$//')" --all
+kubectl delete all --all --all-namespaces
+kind delete cluster
+kind create cluster
+kubectl cluster-info --context kind-kind
+EOL
+
+    sudo chmod +x /k8s_create_cluster.sh
+    sudo echo "alias k8s_create_cluster='/k8s_create_cluster.sh'" >> /root/.bashrc
+
+    sudo cat >> /k8s_create_dashboard.sh <<'EOL'
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+sleep 10
+kubectl create serviceaccount -n kubernetes-dashboard admin-user
+kubectl create clusterrolebinding -n kubernetes-dashboard admin-user --clusterrole cluster-admin --serviceaccount=kubernetes-dashboard:admin-user
+token=$(kubectl -n kubernetes-dashboard create token admin-user)
+echo "Use this token inside K8s dashboard setup page: $token"
+EOL
+
+    sudo chmod +x /k8s_create_dashboard.sh
+    sudo echo "alias k8s_create_dashboard='/k8s_create_dashboard.sh'" >> /root/.bashrc
+
+    sudo cat >> /k8s_start_dashboard.sh <<'EOL'
+echo "Please, access the URL: http://localhost:9998/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login"
+kubectl proxy --port=9998 --address=0.0.0.0
+EOL
+
+    sudo chmod +x /k8s_start_dashboard.sh
+    sudo echo "alias k8s_start_dashboard='/k8s_start_dashboard.sh'" >> /root/.bashrc
+
     echo "Workspace created!"
   SHELL
 end

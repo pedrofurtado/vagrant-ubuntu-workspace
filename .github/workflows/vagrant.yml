@@ -67,6 +67,9 @@ jobs:
       - name: VM - Ngrok
         run: vagrant ssh -c "ngrok -v"
 
+      - name: VM - AWS SAM CLI
+        run: vagrant ssh -c "sam --version"
+
       - name: VM - Default user
         run: vagrant ssh -c "whoami"
 

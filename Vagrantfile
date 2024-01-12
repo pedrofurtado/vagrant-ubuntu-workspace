@@ -46,6 +46,11 @@ Vagrant.configure('2') do |config|
     sudo apt-get install -y virtualbox-guest-utils
     sudo apt-get install -y virtualbox-guest-x11
 
+    sudo wget https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip
+    sudo unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
+    sudo ./sam-installation/install
+    sudo rm -Rf ./sam-installation/ aws-sam-cli-linux-x86_64.zip
+
     sudo echo "alias dc_down='docker-compose down --volumes --rmi local --remove-orphans'" >> /root/.bashrc
     sudo echo "alias dc_up='docker-compose up --build -d'" >> /root/.bashrc
     sudo echo "alias dc_logs='docker-compose logs -f --tail 100'" >> /root/.bashrc

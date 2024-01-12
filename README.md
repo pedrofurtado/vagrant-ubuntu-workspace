@@ -16,8 +16,9 @@ This workspace supports Windows as host.
 
 Install the following softwares in your PC:
 
-- VirtualBox
-- Vagrant
+- VirtualBox "6.1.34 r150636 (Qt5.6.2)" or newer
+- Vagrant v2.2.19 or newer
+- Ruby v2.7.4 or newer
 
 Important note: You will need to run Vagrant as Administrator.
 
@@ -28,7 +29,7 @@ Vagrantfile
 ```ruby
 Vagrant.configure('2') do |config|
   config.vm.box          = 'pedrofurtado/vagrant-ubuntu-workspace'
-  config.vagrant.plugins = ['vagrant-disksize']
+  config.vagrant.plugins = ['vagrant-disksize'] # vagrant-disksize v0.1.3 or newer
   config.disksize.size   = '100GB'
   config.vm.box_version  = 'x.y.z'
   config.vm.network 'forwarded_port', guest: 9999, host: 9999, id: 'portainer'

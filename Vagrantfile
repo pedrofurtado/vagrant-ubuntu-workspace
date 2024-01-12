@@ -1,10 +1,6 @@
 Vagrant.configure('2') do |config|
   config.vm.box = 'ubuntu/jammy64'
   config.vagrant.plugins = ['vagrant-vbguest']
-  config.vm.provider 'virtualbox' do |v|
-    v.memory = '2048'
-    v.cpus = '2'
-  end
   config.vm.provision 'shell', inline: <<-SHELL
     export DEBIAN_FRONTEND=noninteractive
     export DEBCONF_NONINTERACTIVE_SEEN=true

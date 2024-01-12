@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: macos-12
+    runs-on: macos-12@20230505.1
 
     env:
       VAGRANT_CLOUD_USERNAME: pedrofurtado

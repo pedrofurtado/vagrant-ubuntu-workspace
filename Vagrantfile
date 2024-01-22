@@ -51,6 +51,11 @@ Vagrant.configure('2') do |config|
     sudo ./sam-installation/install
     sudo rm -Rf ./sam-installation/ aws-sam-cli-linux-x86_64.zip
 
+    sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    sudo unzip awscliv2.zip
+    sudo sudo ./aws/install
+    sudo rm -Rf ./aws/ awscliv2.zip
+
     sudo echo "alias dc_down='docker-compose down --volumes --rmi local --remove-orphans'" >> /root/.bashrc
     sudo echo "alias dc_up='docker-compose up --build -d'" >> /root/.bashrc
     sudo echo "alias dc_logs='docker-compose logs -f --tail 100'" >> /root/.bashrc

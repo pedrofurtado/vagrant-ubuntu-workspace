@@ -70,6 +70,9 @@ jobs:
       - name: VM - AWS SAM CLI
         run: vagrant ssh -c "sam --version"
 
+      - name: VM - AWS CLI
+        run: vagrant ssh -c "aws --version"
+
       - name: VM - Default user
         run: vagrant ssh -c "whoami"
 

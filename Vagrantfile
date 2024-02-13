@@ -26,9 +26,9 @@ Vagrant.configure('2') do |config|
     sudo docker container run -d -p 9999:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 
     sudo apt-get install -y unzip wget
-    wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-    unzip ngrok-stable-linux-amd64.zip
-    sudo mv ./ngrok /usr/bin/ngrok
+    wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+    sudo tar xvzf ngrok-v3-stable-linux-amd64.tgz -C /usr/bin
+    sudo rm -f ngrok-v3-stable-linux-amd64.tgz
 
     curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
     sudo chmod +x ./kind

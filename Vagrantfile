@@ -30,7 +30,7 @@ Vagrant.configure('2') do |config|
     sudo tar xvzf ngrok-v3-stable-linux-amd64.tgz -C /usr/bin
     sudo rm -f ngrok-v3-stable-linux-amd64.tgz
 
-    curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
+    curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
     sudo chmod +x ./kind
     sudo mv ./kind /usr/local/bin/kind
 

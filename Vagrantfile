@@ -9,6 +9,8 @@ Vagrant.configure('2') do |config|
 
     sudo apt-get install -y dos2unix
 
+    sudo apt-get install -y jq
+
     echo "sudo timedatectl set-timezone America/Sao_Paulo" >> /home/vagrant/.profile
 
     sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release

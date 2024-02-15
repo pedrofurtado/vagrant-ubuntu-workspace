@@ -43,6 +43,9 @@ jobs:
       - name: VM - Dos2Unix
         run: vagrant ssh -c "dos2unix --version"
 
+      - name: VM - Jq
+        run: vagrant ssh -c "jq --version"
+
       - name: VM - Timezone
         run: vagrant ssh -c "date"
 

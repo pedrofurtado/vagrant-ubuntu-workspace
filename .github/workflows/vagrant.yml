@@ -64,8 +64,11 @@ jobs:
       - name: VM - Pip3
         run: vagrant ssh -c "pip3 --version"
 
-      - name: VM - Docker compose
+      - name: VM - Docker compose v1
         run: vagrant ssh -c "docker-compose --version"
+
+      - name: VM - Docker compose v1 pip dependencies (needs docker py in v6.1.3)
+        run: vagrant ssh -c "pip3 list | egrep docker"
 
       - name: VM - Ngrok
         run: vagrant ssh -c "ngrok -v"

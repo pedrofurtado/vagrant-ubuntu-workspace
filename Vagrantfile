@@ -23,6 +23,7 @@ Vagrant.configure('2') do |config|
 
     sudo apt-get install -y python3-pip libffi-dev
     sudo pip3 install docker-compose
+    sudo pip3 install docker==6.1.3
 
     sudo docker volume create portainer_data
     sudo docker container run -d -p 9999:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce

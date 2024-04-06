@@ -52,6 +52,9 @@ jobs:
       - name: VM - Unzip
         run: vagrant ssh -c "unzip -v"
 
+      - name: VM - Wget
+        run: vagrant ssh -c "wget --version"
+
       - name: VM - Timezone
         run: vagrant ssh -c "date"
 

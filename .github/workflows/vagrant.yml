@@ -46,6 +46,12 @@ jobs:
       - name: VM - Jq
         run: vagrant ssh -c "jq --version"
 
+      - name: VM - 7z
+        run: vagrant ssh -c "7z"
+
+      - name: VM - Unzip
+        run: vagrant ssh -c "unzip -v"
+
       - name: VM - Timezone
         run: vagrant ssh -c "date"
 

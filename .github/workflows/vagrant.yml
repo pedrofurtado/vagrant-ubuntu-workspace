@@ -55,6 +55,9 @@ jobs:
       - name: VM - Wget
         run: vagrant ssh -c "wget --version"
 
+      - name: VM - Curl
+        run: vagrant ssh -c "curl --version"
+
       - name: VM - Timezone
         run: vagrant ssh -c "date"
 

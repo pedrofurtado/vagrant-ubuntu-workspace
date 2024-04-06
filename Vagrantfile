@@ -59,6 +59,8 @@ Vagrant.configure('2') do |config|
     sudo sudo ./aws/install
     sudo rm -Rf ./aws/ awscliv2.zip
 
+    sudo apt-get install -y p7zip-full
+
     sudo echo "alias dc_down='docker-compose down --volumes --rmi local --remove-orphans'" >> /root/.bashrc
     sudo echo "alias dc_up='docker-compose up --build -d'" >> /root/.bashrc
     sudo echo "alias dc_logs='docker-compose logs -f --tail 100'" >> /root/.bashrc

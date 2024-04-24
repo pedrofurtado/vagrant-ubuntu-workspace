@@ -67,6 +67,9 @@ jobs:
       - name: VM - Kind K8s
         run: vagrant ssh -c "kind --version"
 
+      - name: VM - K3D K8s
+        run: vagrant ssh -c "k3d --version"
+
       - name: VM - Kubectl K8s
         run: vagrant ssh -c "kubectl --help"
 

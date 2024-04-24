@@ -37,6 +37,8 @@ Vagrant.configure('2') do |config|
     sudo chmod +x ./kind
     sudo mv ./kind /usr/local/bin/kind
 
+    curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | TAG=v5.6.3 bash
+
     sudo apt-get update -y
     sudo apt-get install -y ca-certificates curl apt-transport-https
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"

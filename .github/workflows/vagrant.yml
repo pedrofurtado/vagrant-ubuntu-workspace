@@ -94,6 +94,15 @@ jobs:
       - name: VM - AWS CLI
         run: vagrant ssh -c "aws --version"
 
+      - name: VM - NodeJS
+        run: vagrant ssh -c "node -v"
+
+      - name: VM - NPM
+        run: vagrant ssh -c "npm -v"
+
+      - name: VM - Nodemon
+        run: vagrant ssh -c "nodemon -v"
+
       - name: VM - Default user
         run: vagrant ssh -c "whoami"
 

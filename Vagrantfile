@@ -28,7 +28,7 @@ Vagrant.configure('2') do |config|
     sudo docker volume create portainer_data
     sudo docker container run -d -p 9999:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 
-    sudo apt-get install -y unzip wget
+    sudo apt-get install -y zip unzip wget
     wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
     sudo tar xvzf ngrok-v3-stable-linux-amd64.tgz -C /usr/bin
     sudo rm -f ngrok-v3-stable-linux-amd64.tgz
@@ -57,10 +57,14 @@ Vagrant.configure('2') do |config|
 
     sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     sudo unzip awscliv2.zip
-    sudo sudo ./aws/install
+    sudo ./aws/install
     sudo rm -Rf ./aws/ awscliv2.zip
 
     sudo apt-get install -y p7zip-full
+
+    curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    npm install -g nodemon
 
     sudo echo "alias dc_down='docker-compose down --volumes --rmi local --remove-orphans'" >> /root/.bashrc
     sudo echo "alias dc_up='docker-compose up --build -d'" >> /root/.bashrc

@@ -106,6 +106,9 @@ jobs:
       - name: VM - Nodemon
         run: vagrant ssh -c "nodemon -v"
 
+      - name: VM - Putty
+        run: vagrant ssh -c "puttygen --version"
+
       - name: VM - Default user
         run: vagrant ssh -c "whoami"
 

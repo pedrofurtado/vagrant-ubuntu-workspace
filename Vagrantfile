@@ -64,6 +64,13 @@ Vagrant.configure('2') do |config|
     sudo ./aws/install
     sudo rm -Rf ./aws/ awscliv2.zip
 
+    export EKSCTL_ARCH=amd64
+    export EKSCTL_PLATFORM=$(uname -s)_$EKSCTL_ARCH
+    sudo curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$EKSCTL_PLATFORM.tar.gz"
+    sudo tar -xzf eksctl_$EKSCTL_PLATFORM.tar.gz -C /tmp
+    sudo rm -f eksctl_$EKSCTL_PLATFORM.tar.gz
+    sudo mv /tmp/eksctl /usr/local/bin
+
     sudo apt-get install -y p7zip-full
 
     curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -

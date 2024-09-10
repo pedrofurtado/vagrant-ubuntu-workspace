@@ -82,6 +82,9 @@ jobs:
       - name: VM - Helm K8s
         run: vagrant ssh -c "helm version"
 
+      - name: VM - EKSCTL K8s
+        run: vagrant ssh -c "eksctl version"
+
       - name: VM - Portainer
         run: vagrant ssh -c "sudo docker container inspect portainer | grep Status"
 

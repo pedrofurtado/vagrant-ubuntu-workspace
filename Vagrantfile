@@ -82,6 +82,12 @@ Vagrant.configure('2') do |config|
     sudo ./get_helm.sh
     rm -f ./get_helm.sh
 
+    sudo apt-get install -y php
+    sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    sudo php composer-setup.php
+    sudo mv composer.phar /usr/local/bin/composer
+    sudo php -r "unlink('composer-setup.php');"
+
     sudo apt-get install -y putty-tools
 
     sudo echo "alias dc_down='docker-compose down --volumes --rmi local --remove-orphans'" >> /root/.bashrc

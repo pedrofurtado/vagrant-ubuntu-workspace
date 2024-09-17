@@ -83,7 +83,7 @@ Vagrant.configure('2') do |config|
     rm -f ./get_helm.sh
 
     sudo apt-get install -y php
-    sudo apt-get install -y php-curl
+    sudo apt-get install -y php-curl php-mbstring
     sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
     sudo php composer-setup.php
     sudo mv composer.phar /usr/local/bin/composer

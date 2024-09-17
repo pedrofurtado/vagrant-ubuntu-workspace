@@ -115,6 +115,12 @@ jobs:
       - name: VM - Nodemon
         run: vagrant ssh -c "nodemon -v"
 
+      - name: VM - PHP
+        run: vagrant ssh -c "php -v"
+
+      - name: VM - PHP Composer
+        run: vagrant ssh -c "composer --version"
+
       - name: VM - Putty
         run: vagrant ssh -c "puttygen --version"
 

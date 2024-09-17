@@ -38,7 +38,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: VM - Build script
-        run: vagrant up
+        run: vagrant up --provider=virtualbox
 
       - name: VM - OS version
         run: vagrant ssh -c "cat /etc/os-release"

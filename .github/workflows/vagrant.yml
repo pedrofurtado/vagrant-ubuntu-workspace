@@ -124,6 +124,15 @@ jobs:
       - name: VM - Putty
         run: vagrant ssh -c "puttygen --version"
 
+      - name: VM - Google Cloud CLI - gcloud
+        run: vagrant ssh -c "gcloud --version"
+
+      - name: VM - Google Cloud CLI - bq
+        run: vagrant ssh -c "bq version"
+
+      - name: VM - Google Cloud CLI - gsutil
+        run: vagrant ssh -c "gsutil --version"
+
       - name: VM - Default user
         run: vagrant ssh -c "whoami"
 

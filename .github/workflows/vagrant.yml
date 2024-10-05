@@ -22,7 +22,7 @@ jobs:
           rm -f virtualbox.rb
 
       - name: Install Vagrant
-        run: brew install vagrant@2.4.1
+        run: brew install vagrant
 
       - name: Version - Vagrant
         run: vagrant --version

@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Install VirtualBox and Vagrant
-        run: brew install virtualbox vagrant
+        run: brew install virtualbox@7.0.20 vagrant@2.4.1
 
       - name: Version - Vagrant
         run: vagrant --version

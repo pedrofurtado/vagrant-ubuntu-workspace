@@ -91,6 +91,8 @@ Vagrant.configure('2') do |config|
 
     sudo apt-get install -y putty-tools
 
+    sudo snap install google-cloud-cli --classic
+
     sudo echo "alias dc_down='docker-compose down --volumes --rmi local --remove-orphans'" >> /root/.bashrc
     sudo echo "alias dc_up='docker-compose up --build -d'" >> /root/.bashrc
     sudo echo "alias dc_logs='docker-compose logs -f --tail 100'" >> /root/.bashrc

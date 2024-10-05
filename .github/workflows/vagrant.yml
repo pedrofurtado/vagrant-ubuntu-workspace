@@ -18,7 +18,7 @@ jobs:
       - name: Install VirtualBox
         run: |
           wget https://raw.githubusercontent.com/Homebrew/homebrew-cask/f70d37ccb8d9aed963e3edffc78067cb22b9892b/Casks/v/virtualbox.rb
-          brew install --HEAD -s virtualbox.rb
+          brew install --cask virtualbox.rb
           rm -f virtualbox.rb
 
       - name: Install Vagrant
